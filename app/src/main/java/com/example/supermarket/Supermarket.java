@@ -3,15 +3,12 @@ package com.example.supermarket;
 public class Supermarket {
     private int supermarketID;
     private String supermarketName;
-
-
-
     private String address;
-    private int liquorDeptRate;
-    private int produceDeptRate;
-    private int meatDeptRate;
-    private int cheeseSelRate;
-    private int checkoutRate;
+    private float liquorDeptRate;
+    private float produceDeptRate;
+    private float meatDeptRate;
+    private float cheeseSelRate;
+    private float checkoutRate;
 
     public int getSupermarketID() {
         return supermarketID;
@@ -37,47 +34,47 @@ public class Supermarket {
         this.address = address;
     }
 
-    public int getLiquorDeptRate() {
+    public float getLiquorDeptRate() {
         return liquorDeptRate;
     }
 
-    public void setLiquorDeptRate(int liquorDeptRate) {
+    public void setLiquorDeptRate(float liquorDeptRate) {
         this.liquorDeptRate = liquorDeptRate;
     }
 
-    public int getProduceDeptRate() {
+    public float getProduceDeptRate() {
         return produceDeptRate;
     }
 
-    public void setProduceDeptRate(int produceDeptRate) {
+    public void setProduceDeptRate(float produceDeptRate) {
         this.produceDeptRate = produceDeptRate;
     }
 
-    public int getMeatDeptRate() {
+    public float getMeatDeptRate() {
         return meatDeptRate;
     }
 
-    public void setMeatDeptRate(int meatDeptRate) {
+    public void setMeatDeptRate(float meatDeptRate) {
         this.meatDeptRate = meatDeptRate;
     }
 
-    public int getCheeseSelRate() {
+    public float getCheeseSelRate() {
         return cheeseSelRate;
     }
 
-    public void setCheeseSelRate(int cheeseSelRate) {
+    public void setCheeseSelRate(float cheeseSelRate) {
         this.cheeseSelRate = cheeseSelRate;
     }
 
-    public int getCheckoutRate() {
+    public float getCheckoutRate() {
         return checkoutRate;
     }
 
-    public void setCheckoutRate(int checkoutRate) {
+    public void setCheckoutRate(float checkoutRate) {
         this.checkoutRate = checkoutRate;
     }
 
-    public Supermarket(int supermarketID, String supermarketName, String address, int liquorDeptRate, int produceDeptRate, int meatDeptRate, int cheeseSelRate, int checkoutRate) {
+    public Supermarket(int supermarketID, String supermarketName, String address, float liquorDeptRate, float produceDeptRate, float meatDeptRate, float cheeseSelRate, float checkoutRate) {
         this.supermarketID = supermarketID;
         this.supermarketName = supermarketName;
         this.address = address;
@@ -90,7 +87,7 @@ public class Supermarket {
     public Supermarket(){
 
     }
-    public Supermarket(String supermarketName, String address, int liquorDeptRate, int produceDeptRate, int meatDeptRate, int cheeseSelRate, int checkoutRate) {
+    public Supermarket(String supermarketName, String address, float liquorDeptRate, float produceDeptRate, float meatDeptRate, float cheeseSelRate, float checkoutRate) {
         this.supermarketName = supermarketName;
         this.address = address;
         this.liquorDeptRate = liquorDeptRate;

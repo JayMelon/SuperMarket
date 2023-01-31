@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -29,14 +30,14 @@ public static final String COLUMN_SUPERMARKET_LIQUOR_RATE = "COLUMN_SUPERMARKET_
 //Creates Database onCreate
     @Override
     public void onCreate(SQLiteDatabase supermarketDB) {
-        String createTable = "CREATE TABLE " + SUPERMARKET_TABLE + " ( " + COLUMN_SUPERMARKET_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
+        String createTable = "CREATE TABLE " + SUPERMARKET_TABLE + " ( " + COLUMN_SUPERMARKET_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMN_SUPERMARKET_NAME + " TEXT, "
                 + COLUMN_SUPERMARKET_ADDRESS + " TEXT, "
-                + COLUMN_SUPERMARKET_LIQUOR_RATE+" INT, "
-                + COLUMN_SUPERMARKET_PRODUCE_RATE+" INT, "
-                + COLUMN_SUPERMARKET_MEAT_RATE+" INT, "
-                + COLUMN_SUPERMARKET_CHEESE_RATE+" INT, "
-                + COLUMN_SUPERMARKET_CHECKOUT_RATE+" INT )";
+                + COLUMN_SUPERMARKET_LIQUOR_RATE+" REAL, "
+                + COLUMN_SUPERMARKET_PRODUCE_RATE+" REAL, "
+                + COLUMN_SUPERMARKET_MEAT_RATE+" REAL, "
+                + COLUMN_SUPERMARKET_CHEESE_RATE+" REAL, "
+                + COLUMN_SUPERMARKET_CHECKOUT_RATE+" REAL )";
        supermarketDB.execSQL(createTable);
     }
     @Override
@@ -51,13 +52,14 @@ public static final String COLUMN_SUPERMARKET_LIQUOR_RATE = "COLUMN_SUPERMARKET_
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_SUPERMARKET_NAME,supermarket.getSupermarketName());
         cv.put(COLUMN_SUPERMARKET_ADDRESS,supermarket.getAddress());
-        cv.put(COLUMN_SUPERMARKET_NAME,supermarket.getLiquorDeptRate());
-        cv.put(COLUMN_SUPERMARKET_NAME,supermarket.getProduceDeptRate());
-        cv.put(COLUMN_SUPERMARKET_NAME,supermarket.getMeatDeptRate());
-        cv.put(COLUMN_SUPERMARKET_NAME,supermarket.getCheeseSelRate());
-        cv.put(COLUMN_SUPERMARKET_NAME,supermarket.getCheckoutRate());
+        cv.put(COLUMN_SUPERMARKET_LIQUOR_RATE,supermarket.getLiquorDeptRate());
+        cv.put(COLUMN_SUPERMARKET_PRODUCE_RATE,supermarket.getProduceDeptRate());
+        cv.put(COLUMN_SUPERMARKET_MEAT_RATE,supermarket.getMeatDeptRate());
+        cv.put(COLUMN_SUPERMARKET_CHEESE_RATE,supermarket.getCheeseSelRate());
+        cv.put(COLUMN_SUPERMARKET_CHECKOUT_RATE,supermarket.getCheckoutRate());
         long insert = db.insert(SUPERMARKET_TABLE, null, cv);
         if(insert == -1){
+            System.out.println("Failed to add "+supermarket.toString());
             return false;
         }
         return true;
@@ -72,14 +74,22 @@ public static final String COLUMN_SUPERMARKET_LIQUOR_RATE = "COLUMN_SUPERMARKET_
         if(cursor.moveToFirst()){
             do{
                 Supermarket newSuperMarket = new Supermarket(
+                        //Get ID
                     cursor.getInt(0),
+                        //Get Name
                         cursor.getString(1),
+                        //Get Address
                         cursor.getString(2),
-                        cursor.getInt(3),
-                        cursor.getInt(4),
-                        cursor.getInt(5),
-                        cursor.getInt(6),
-                        cursor.getInt(7)
+                        //Get Liquor Rate
+                        cursor.getFloat(3),
+                        //Get Produce Rate
+                        cursor.getFloat(4),
+                        //Get Meat Rate
+                        cursor.getFloat(5),
+                        //Get Cheese Rate
+                        cursor.getFloat(6),
+                        //Get Liquor Rate
+                        cursor.getFloat(7)
                 );
                 returnList.add(newSuperMarket);
             }

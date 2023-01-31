@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">SuperMarket</string>
+    <string name="meatTextString">Meat Department</string>
+    <string name="liquorDepTextView">Liquor Department</string>
+    <string name="produceDepTextView">Produce Department</string>
+    <string name="cheeseSelTextView">Cheese Selection</string>
+    <string name="eastOfCheckoutTextView">Ease of Checkout</string>
+    <string name="saveButtonText">Save</string>
+    <string name="rateButtonText">Rate</string>
+    <string name="averageTextView">Average</string>
+    <string name="supermarketNameTextView">Name</string>
+    <string name="supermarketNameEditHint">Enter Supermarket Name</string>
+    <string name="supermarketAddressTextView">Address</string>
+    <string name="supermarketAddressEditHint">Enter Supermarket Address</string>
+    <string name="backButtonText">Back</string>
 </resources>
