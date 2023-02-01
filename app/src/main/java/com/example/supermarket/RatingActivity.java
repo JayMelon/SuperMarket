@@ -1,5 +1,7 @@
 package com.example.supermarket;
 
+import static android.icu.text.DisplayContext.LENGTH_SHORT;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -31,7 +33,9 @@ public class RatingActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating);
+        //Unwraps bundle from intent
         Bundle extras = getIntent().getExtras();
+        //Need key set string
         String supermarketName = extras.getString("marketName");
         String supermarketAddress = extras.getString("marketAddress");
 
@@ -96,7 +100,7 @@ DatabaseHandler db = new DatabaseHandler(RatingActivity.this);
         });
         //Produce rating
 
-
+Toast.makeText(this,"Ratings Saved",Toast.LENGTH_SHORT).show();
     }
 
 

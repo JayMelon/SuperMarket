@@ -41,6 +41,7 @@ Button rateButton;
 private void launchRate(View v){
         Intent i = new Intent(MainActivity.this, RatingActivity.class);
         i.setFlags(i.FLAG_ACTIVITY_CLEAR_TOP);
+        //Gets users entered text and stores in intent
         i.putExtra("marketName", enterSupermarketName.getText().toString());
         i.putExtra("marketAddress", enterSupermarketAddress.getText().toString());
         startActivity(i);
