@@ -23,11 +23,11 @@ public class RatingActivity extends AppCompatActivity  {
 
 
     //Objects in class later to be init
-
-
+//Holds the id after save to check dup
+String checker;
     Button backButton,saveButton;
     RatingBar produceRate,cheeseSelectRate,meatDepRate,liquorRate, checkoutRate;
-    TextView averageRating;
+    TextView averageRating,updateText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,8 @@ public class RatingActivity extends AppCompatActivity  {
         String supermarketAddress = extras.getString("marketAddress");
 
         //Creating Objects
-
+        updateText = findViewById(R.id.uploadedText);
+        updateText.setVisibility(View.INVISIBLE);
         backButton = findViewById(R.id.backButton);
         saveButton = findViewById(R.id.saveButton);
         produceRate = findViewById(R.id.produceRatingBar);
@@ -88,19 +89,25 @@ public class RatingActivity extends AppCompatActivity  {
                 supermarket.setMeatDeptRate(meatDepRating);
                 supermarket.setLiquorDeptRate(liquorRating);
                 supermarket.setCheckoutRate(checkoutRating);
-                System.out.println(supermarket.toString());
 //Get average
                 Float average = (produceRating+cheeseSelRating+meatDepRating+liquorRating+checkoutRating)/5;
 
                 averageRating.setText(""+average);
 //Update to Database
 DatabaseHandler db = new DatabaseHandler(RatingActivity.this);
-    db.addData(supermarket);
+    if(db.addData(supermarket)){
+        updateText.setVisibility(View.VISIBLE);
+        updateText.setText(getResources().getString(R.string.addDatatrue));
+        updateText.setTextColor(getResources().getColor(R.color.Green));
+    }else {
+        updateText.setVisibility(View.VISIBLE);
+        updateText.setText(getResources().getString(R.string.addDatafalse));
+        updateText.setTextColor(getResources().getColor(R.color.Red));
+    }
             }
         });
         //Produce rating
 
-Toast.makeText(this,"Ratings Saved",Toast.LENGTH_SHORT).show();
     }
 
 

@@ -64,6 +64,20 @@ public static final String COLUMN_SUPERMARKET_LIQUOR_RATE = "COLUMN_SUPERMARKET_
         }
         return true;
     }
+    public String getRecentSupermarketID(){
+        String result;
+        String query = ("SELECT MAX("+COLUMN_SUPERMARKET_ID+") from "+SUPERMARKET_TABLE);
+        try{
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(query, null);
+            cursor.moveToFirst();
+            result = cursor.getString(0);
+            cursor.close();
+        }catch(Exception e){
+            return null;
+        }
+        return result;
+    }
     public ArrayList<Supermarket> getAllSupermarket(){
         ArrayList<Supermarket> returnList = new ArrayList<>();
         //Get data from the Database

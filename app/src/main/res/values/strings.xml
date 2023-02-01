@@ -13,4 +13,6 @@
     <string name="supermarketAddressTextView">Address</string>
     <string name="supermarketAddressEditHint">Enter Supermarket Address</string>
     <string name="backButtonText">Back</string>
+    <string name="addDatatrue">"Ratings Saved! "</string>
+    <string name="addDatafalse">"Something went wrong! "</string>
 </resources>

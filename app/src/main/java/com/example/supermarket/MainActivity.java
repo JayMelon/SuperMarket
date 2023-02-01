@@ -24,8 +24,9 @@ Button rateButton;
         rateButton = findViewById(R.id.rateButton);
 
 
-        //Listener Setup
+        //Listeners Setup
 
+        //Rate Button
         rateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
